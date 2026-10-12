@@ -488,6 +488,10 @@ For detailed documentation, visit our [Documentation Site](https://anus-ai.githu
 - [Examples](https://anus-ai.github.io/docs/examples)
 - [Contributing Guide](https://anus-ai.github.io/docs/contributing)
 
+### Bundled Resources
+
+- [Front-End Checklist](resources/Front-End-Checklist) — git submodule of [thedaviddias/Front-End-Checklist](https://github.com/thedaviddias/Front-End-Checklist) (MIT), a front-end quality checklist with per-rule agent skills and an MCP server. Fetch it with `git submodule update --init`.
+
 ## 👥 Contributing
 
 We welcome contributions from the community! Anus is designed to be community-driven, and your input helps make it better for everyone.

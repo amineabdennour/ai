@@ -1,0 +1,3 @@
+[submodule "resources/Front-End-Checklist"]
+	path = resources/Front-End-Checklist
+	url = https://github.com/thedaviddias/Front-End-Checklist.git
