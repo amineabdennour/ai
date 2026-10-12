@@ -32,8 +32,8 @@
   --shadow:0 18px 40px -18px rgba(0,0,0,.45), 0 4px 10px -4px rgba(0,0,0,.28);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scrollbar-color:var(--on-cobalt-soft) var(--cobalt-deep)}
-body{margin:0;background:var(--cobalt);color:var(--on-cobalt);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{overflow-x:clip;scroll-behavior:smooth;scrollbar-color:var(--on-cobalt-soft) var(--cobalt-deep)}
+body{margin:0;background:var(--cobalt);color:var(--on-cobalt);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
 ::selection{background:var(--stamp);color:#fff}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
 :focus-visible{outline:3px solid var(--stamp);outline-offset:3px;border-radius:4px}
@@ -81,7 +81,7 @@ img,svg{display:block}
 /* ---------- Hero ---------- */
 .hero{position:relative;padding:0 0 clamp(64px,9vw,120px)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5.4fr);gap:clamp(28px,4vw,64px);align-items:start}
-.hero-ticket{margin-top:0;padding:clamp(28px,4vw,52px) clamp(24px,4vw,56px) 0;transform-origin:top center;animation:feed 1.1s var(--ease) both}
+.hero-ticket{position:sticky;top:68px;margin-top:0;padding:clamp(28px,4vw,52px) clamp(24px,4vw,56px) 0;transform-origin:top center;animation:feed 1.1s var(--ease) both}
 @keyframes feed{from{clip-path:inset(0 0 100% 0);transform:translateY(-24px)}to{clip-path:inset(0 0 -40px 0);transform:none}}
 .hero h1{font:800 clamp(2.5rem,5.4vw,4.8rem)/.95 var(--display);letter-spacing:-.035em;margin:22px 0 22px;text-wrap:balance}
 .hero h1 q{quotes:"“" "”";color:var(--stamp)}
@@ -142,6 +142,7 @@ img,svg{display:block}
 .slip.printing{transform:none}
 .slip .row{display:flex;justify-content:space-between;gap:10px}
 .slip .row span:last-child{text-align:right;font-weight:500}
+.slip .row span:first-child{flex:none}
 .slip .big{font:700 .95rem/1.4 var(--mono);margin:6px 0}
 .slip .stamp{display:block;width:max-content;margin:12px 4px 0 auto;font-size:.72rem}
 .demo-note{font:400 .75rem/1.4 var(--mono);color:var(--on-cobalt-soft);margin-top:18px}
@@ -237,7 +238,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
 
 /* ---------- Responsive ---------- */
 @media (max-width:980px){
-  .printer{margin:-30px auto 0;transform:none}
+  .hero-ticket{position:relative;top:0}
+  .printer{margin:20px auto 0;transform:none}
   .hero .wrap{grid-template-columns:1fr}
   .rail{padding-top:0}
   .leaks{grid-template-columns:1fr 1fr}
@@ -404,7 +406,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
 
       <div class="step">
         <span class="n" aria-hidden="true">1</span>
-        <div><h3>It spots buying comments.</h3><p>“prix ?”, “بشحال؟”, “je veux 2 + phone number.” Roborder picks out the comments that mean a buyer, on your ads and organic posts.</p></div>
+        <div><h3>It spots buying comments.</h3><p>Price questions in French or Arabic, “I want one”, a phone number left in the comments. Roborder picks out the comments that mean a buyer, on your ads and organic posts.</p></div>
         <div class="vis" aria-label="Example: buying comment detected">
           <ul class="comments" style="min-height:0;margin:0">
             <li class="c"><span class="av" style="background:#B9F27C">H</span><div class="bubble" lang="fr"><b>Hamza</b>Top 🔥🔥</div></li>
@@ -584,7 +586,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
       '<div class="row"><span>LEAD #R-0'+num+'</span><span>'+now()+'</span></div>'+
       '<hr class="perf" style="margin:8px 0">'+
       '<div class="big">'+f.n+'</div>'+
-      '<div class="row"><span>SAID</span><span'+(f.rtl?' dir="rtl"':'')+'><bdi>“'+esc(f.t.trim().replace(/,$/,''))+'”</bdi></span></div>'+
+      '<div class="row"><span>SAID</span><span><bdi>'+esc(f.t.trim().replace(/,$/,''))+'</bdi></span></div>'+
       '<div class="row"><span>PHONE</span><span>'+(f.tel||'asked in DM')+'</span></div>'+
       '<div class="row"><span>ITEM</span><span>'+P+' '+(f.q||'×1')+'</span></div>'+
       '<div class="row"><span>STATUS</span><span>to confirm</span></div>'+
